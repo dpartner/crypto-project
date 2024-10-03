@@ -1,0 +1,47 @@
+body.welcome {
+  overflow: hidden;
+}
+
+.section.welcome {
+  padding: 100px 0 35px;
+  height: 100dvh;
+}
+
+.container.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.welcome-heading {
+  font-weight: 700;
+  font-size: 56px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin-bottom: 55px;
+}
+
+.img-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.img-wrap img {
+  width: 100%;
+}
+
+.welcome-button-wrap {
+  margin-top: auto;
+  display: block;
+  width: 100%;
+}
+
+.primary-button.welcome {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+}

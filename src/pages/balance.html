@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/modern-normalize.css" />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/balance.css" />
+  </head>
+  <body>
+    <header class="section header-section">
+      <div class="container header-container">
+        <div class="header-menu-button-wrap">
+          <button class="header-menu-button"><span></span></button>
+        </div>
+        <div>
+          <p class="header-user-id">#user_id</p>
+        </div>
+        <div class="user-icon-wrap">
+          <img src="../img/svg/user-icon.svg" alt="" />
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="section balance-section">
+        <div class="container r">
+          <div class="balance-wrap">
+            <h2 class="balance-heading">Total Balance</h2>
+            <div class="balance-value-wrap">
+              <span>$</span>
+              <span class="balance">0</span>
+              <button class="balance-button-eye">
+                <svg width="24" height="17">
+                  <use href="../img/svg/symbol-defs.svg#icon-eye" />
+                </svg>
+              </button>
+            </div>
+            <div class="balance-button-wrap">
+              <a class="primary-button deactive balance" href="">
+                <svg width="9" height="11">
+                  <use href="../img/svg/symbol-defs.svg#icon-arrow-up" />
+                </svg>
+                Send<span>Soon!</span>
+              <a class="primary-button deactive balance" href="">
+                <svg width="9" height="11">
+                  <use href="../img/svg/symbol-defs.svg#icon-arrow-up" />
+                </svg>
+                Get<span>Soon!</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section tokens-section">
+        <div class="container">
+          <div class="tokens-heading-wrap">
+            <h2 class="tokens-heading">Tokens</h2>
+            <a class="tokens-history-button">History</a>
+          </div>
+          <div class="tokens-list-wrap">
+            <ul class="tokens-list">
+              <li class="tokens-list-item">
+                <div>
+                  <img src="../img/tonkoin.png" width="32" height="32" alt="tonkoin">
+                </div>
+                <div class="tokens-list-item-values-wrap">
+                  <div class="tokens-item-heading">
+                    <h4>Tonkoin</h4>
+                    <span>3,47</span>
+                  </div>
+                  <div class="tokens-item-summary">
+                    <span class="tokens-item-summary-price">$5,74</span> 
+                    <span class="tokens-item-summary-status up">+3,65%</span> 
+                    <span class="tokens-item-summary-sum">$ 19,98</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <section class="section">
+        <div class="container">
+          <nav>
+            <ul class="footer-button-list">
+              <li class="footer-button-item active">
+                <a class="footer-button-link" href="./balance.html">
+                  <svg width="25" height="25">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-first-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item">
+                <a class="footer-button-link" href="#">
+                  <svg width="25" height="25">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-second-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item center">
+                <a class="footer-button-link center" href="#">
+                  <svg width="28" height="23">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-third-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item fourth">
+                <a class="footer-button-link" href="#">
+                  <svg width="21" height="25">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-fourth-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item">
+                <a class="footer-button-link" href="#">
+                  <svg width="25" height="28">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-fifth-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </footer>
+  </body>
+  <script type="module" src="../js/balance.js" ></script>
+</html>
