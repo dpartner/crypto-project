@@ -107,6 +107,8 @@
   border-radius: 15px;
   background-color: var(--card-bg-color);
   padding: 16px 17px;
+  max-height: 180px;
+  overflow-y: scroll;
 }
 
 .tokens-list-item {
