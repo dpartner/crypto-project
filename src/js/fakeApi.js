@@ -68,8 +68,9 @@ const coins = [
 ];
 
 const user = {
-  id: 234565,
+  id: 23456,
   name: 'John Doe',
   email: 'john.doe@example.com',
   balance: '23567',
+  photoUrl: '../img/user-photo.png',
 };

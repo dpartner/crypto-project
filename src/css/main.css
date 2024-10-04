@@ -109,6 +109,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+.user-icon-wrap img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ----------------------------FOOTER---------------------------- */

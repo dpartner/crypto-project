@@ -4,6 +4,7 @@ const domElements = {
   coinsList: document.querySelector('.tokens-list'),
   eye: document.querySelector('.balance-button-eye'),
   balance: document.querySelector('.balance'),
+  tokensContainer: document.querySelector('.tokens-list-wrap'),
 };
 
 const user = fetchUser();
@@ -32,7 +33,7 @@ async function handleHiddenBalance(e) {
 async function createMarkup() {
   // Передаешь вызову функции api нужный аргумент например UserId
   const data = await fetchCoins();
-  console.log(data);
+  // console.log(data);
   const markup = data.map(coin => {
     const change = parseFloat(coin.change.replace(/,/g, '.'));
     let changeSymbol = '';
@@ -65,3 +66,22 @@ async function createMarkup() {
   });
   return markup;
 }
+
+function scroolTokensWrap() {
+  setTimeout(() => {
+    domElements.tokensContainer.scroll({
+      top: 20,
+      behavior: 'smooth',
+    });
+  }, 2000);
+  setTimeout(() => {
+    domElements.tokensContainer.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, 2500);
+}
+
+window.addEventListener('load', () => {
+  scroolTokensWrap();
+});
