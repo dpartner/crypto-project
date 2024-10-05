@@ -26,7 +26,7 @@
       </div>
     </header>
     <main>
-      <section class="section balance-section">
+      <section class="section balance-section ">
         <div class="container r">
           <div class="balance-wrap">
             <h2 class="balance-heading">Total Balance</h2>
@@ -55,11 +55,11 @@
           </div>
         </div>
       </section>
-      <section class="section tokens-section">
+      <section class="section tokens-section ">
         <div class="container">
           <div class="tokens-heading-wrap">
             <h2 class="tokens-heading">Tokens</h2>
-            <a class="tokens-history-button">History</a>
+            <button class="tokens-history-button">History</button>
           </div>
           <div class="tokens-list-wrap">
             <ul class="tokens-list">
@@ -83,6 +83,25 @@
           </div>
         </div>
       </section>
+      <section class="section history-section hidden">
+        <div class="container">
+          <div class="history-list-wrap">
+            <h2 class="history-list-date">24.09.24</h2>
+            <ul class="history-list">
+              <li class="history-list-item">
+                <div>
+                  <img src="../img/tonkoin.png" width="32" height="32" alt="tonkoin">
+                </div>
+                <div class="history-item-heading">
+                  <h4>Tonkoin</h4>
+                  <span class="history-item-value">3,47</span>
+                  <span class="history-item-code">TON</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="footer">
       <section class="section">
@@ -90,7 +109,7 @@
           <nav>
             <ul class="footer-button-list">
               <li class="footer-button-item active">
-                <a class="footer-button-link" href="./balance.html">
+                <a class="footer-button-link close-history" href="./balance.html">
                   <svg width="25" height="25">
                     <use
                       href="../img/svg/symbol-defs.svg#icon-first-page"
