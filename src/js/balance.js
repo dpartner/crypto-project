@@ -161,38 +161,6 @@ async function dataGroupingHistory() {
     }
   }
 
-  // for (const transaction of history) {
-  //   const dateTrans = new Date(transaction.date);
-  //   if (historyGroup.length) {
-  //     for (const group of historyGroup) {
-  //       const dateGroup = new Date(group.date);
-  //       if (
-  //         dateTrans.getDate() === dateGroup.getDate() &&
-  //         dateTrans.getMonth() === dateGroup.getMonth() &&
-  //         dateTrans.getFullYear() === dateGroup.getFullYear()
-  //       ) {
-  //         console.log(`1 ${dateTrans.getDate()} ${dateGroup.getDate()}`);
-  //         group.transactions.push(transaction);
-  //         break;
-  //       } else {
-  //         console.log(`2 ${dateTrans.getDate()} ${dateGroup.getDate()}`);
-
-  //         historyGroup.push({
-  //           date: transaction.date,
-  //           transactions: [transaction],
-  //         });
-  //         break;
-  //       }
-  //     }
-  //   } else {
-  //     console.log(`3 ${dateTrans}`);
-  //     historyGroup.push({
-  //       date: transaction.date,
-  //       transactions: [transaction],
-  //     });
-  //   }
-  // }
-
   return historyGroups;
 }
 

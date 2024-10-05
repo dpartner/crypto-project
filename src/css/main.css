@@ -8,6 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+  max-height: 100dvh;
 }
 
 .section {
@@ -123,6 +124,8 @@ body {
   margin-top: auto;
   display: block;
   padding-bottom: 20px;
+  z-index: 999;
+  position: relative;
 }
 
 .footer-button-list {

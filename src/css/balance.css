@@ -1,5 +1,11 @@
 /* ----------------------------BALANCE---------------------------- */
 
+main {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .balance-section {
   padding-top: 28px;
   transition: all 0.5s ease-in-out;
@@ -10,6 +16,7 @@
   transform: scale(0) translateY(2000px);
   opacity: 0;
   position: absolute;
+  z-index: 1;
 }
 
 .balance-wrap {
@@ -100,6 +107,7 @@ body.loaded .balance-wrap {
   transform: scale(0) translateY(2000px);
   opacity: 0;
   position: absolute;
+  z-index: 1;
 }
 
 .tokens-heading-wrap {
@@ -132,7 +140,8 @@ body.loaded .balance-wrap {
   border-radius: 15px;
   background-color: var(--card-bg-color);
   padding: 16px 17px;
-  max-height: 180px;
+  max-height: calc(100dvh - 56px - 195px - 28px - 18px - 74px - 45px);
+  /* max-height: 180px; */
   overflow-y: scroll;
   behavior: smooth;
   opacity: 0;
@@ -146,11 +155,21 @@ body.loaded .tokens-list-wrap {
   opacity: 1;
 }
 
-@media screen and (min-height: 650px) {
+/* @media screen and (min-height: 650px) {
   .tokens-list-wrap {
-    min-height: 230px;
+    min-height: 260px;
   }
 }
+@media screen and (min-height: 700px) {
+  .tokens-list-wrap {
+    min-height: 300px;
+  }
+}
+@media screen and (min-height: 750px) {
+  .tokens-list-wrap {
+    min-height: 300px;
+  }
+} */
 
 .tokens-list-item {
   display: flex;
