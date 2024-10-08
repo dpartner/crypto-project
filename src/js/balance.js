@@ -1,6 +1,8 @@
 import { fetchCoins, fetchUser, fetchHistory } from './fakeApi.js';
 
 const domElements = {
+  loader: document.querySelector('.loader-wrap'),
+  balanceWrap: document.querySelector('.balance-wrap'),
   coinsList: document.querySelector('.tokens-list'),
   eye: document.querySelector('.balance-button-eye'),
   balance: document.querySelector('.balance'),
@@ -12,16 +14,31 @@ const domElements = {
   closeHistoryButton: document.querySelector('.close-history'),
   historyListWrap: document.querySelector('.history-list-wrap'),
 };
+const timeOut = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // ------------Add Markup-------------------
 
-addMarkup();
-const user = fetchUser();
+let user;
 
+addMarkup();
 async function addMarkup() {
-  const markup = (await createMarkup()).join('');
-  domElements.coinsList.innerHTML = markup;
-  domElements.balance.innerHTML = (await user).balance;
+  domElements.loader.classList.remove('hidden');
+
+  // Imitation fetch delay----------------------------------delete this
+  const pause = await timeOut(800);
+
+  try {
+    user = await fetchUser();
+    const markup = await createMarkup();
+    domElements.loader.classList.add('hidden');
+    domElements.balance.innerHTML = user.balance;
+    domElements.coinsList.innerHTML = markup;
+    domElements.balanceWrap.classList.add('shown');
+    domElements.tokensContainer.classList.add('shown');
+  } catch (error) {
+    domElements.loader.children[1].innerHTML =
+      'Something went wrong, please try again...';
+  }
 }
 
 // ------------Hide balance-------------------
@@ -75,7 +92,8 @@ async function createMarkup() {
               </li>
     `;
   });
-  return markup;
+  return markup.join('');
+  // return error;
 }
 
 // Animation tokens wrap

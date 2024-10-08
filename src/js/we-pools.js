@@ -1,14 +1,31 @@
 import { fetchPools } from './fakeApi.js';
 
 const domElements = {
+  loader: document.querySelector('.loader-wrap'),
   poolsList: document.querySelector('.pools-list'),
+  poolsListImg: document.querySelector('.we-img-wrap img'),
 };
+
+const timeOut = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 addMarkup();
 
 async function addMarkup() {
-  const markup = await createMarkup();
-  domElements.poolsList.innerHTML = markup;
+  domElements.loader.classList.remove('hidden');
+
+  // Imitation fetch delay----------------------------------delete this
+  const pause = await timeOut(800);
+
+  try {
+    const markup = await createMarkup();
+    domElements.poolsList.innerHTML = markup;
+    domElements.loader.classList.add('hidden');
+    domElements.poolsListImg.classList.add('shown');
+    domElements.poolsList.classList.add('shown');
+  } catch (error) {
+    domElements.loader.children[1].innerHTML =
+      'Something went wrong, please try again...';
+  }
 }
 
 domElements.poolsList.addEventListener('click', handlePoolsChanger);
@@ -16,11 +33,12 @@ domElements.poolsList.addEventListener('click', handlePoolsChanger);
 function handlePoolsChanger(e) {
   e.preventDefault();
   console.dir(e.target);
-  console.log(e.currenTarget);
+  console.dir(e.currentTarget);
   if (e.target.dataset.action === 'open-input') {
     e.target.parentElement.parentElement.parentElement.classList.toggle(
       'shown'
     );
+    e.target.classList.toggle('open');
     setTimeout(() => {
       e.target.parentElement.parentElement.parentElement.scrollIntoView({
         block: 'center',
@@ -32,6 +50,12 @@ function handlePoolsChanger(e) {
     const value = e.target.dataset.maxvalue;
     console.log(value);
     e.target.previousElementSibling.value = value;
+  }
+  if (e.target.type === 'submit') {
+    const value = e.target.parentElement.parentElement.children[0].value;
+    e.target.parentElement.parentElement.children[0].value = '';
+    // Write code below this, for sending data
+    console.log(value);
   }
 }
 
@@ -63,7 +87,7 @@ async function createMarkup() {
                     <h4>${pool.coinCode}</h4>
                     <span class="pools-item-heading-apr ${poolStatusClass}">${pool.value}% ${poolStatusCode}</span>
                     <span class="pools-item-heading-days">${pool.days} d</span>
-                    <button class="pools-item-heading-button" data-action='open-input'>
+                    <button type="button" class="pools-item-heading-button" data-action='open-input'>
                       <svg width="9" height="9">
                         <use
                           href="../img/svg/symbol-defs.svg#icon-down-arrow"
@@ -84,7 +108,7 @@ async function createMarkup() {
                       type="number"
                       placeholder="Enter Amount"
                     />
-                    <button class="pools-item-details-input-max-button" data-action='max-value' data-maxvalue='${pool.balance}'>
+                    <button type="button" class="pools-item-details-input-max-button" data-action='max-value' data-maxvalue='${pool.balance}'>
                       Max
                     </button>
                     <div class="pools-item-details-button-wrap">

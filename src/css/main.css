@@ -55,6 +55,35 @@ main {
   background: var(--text-secondary-color);
 }
 
+.loader-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(23, 23, 31, 0.9);
+  gap: 20px;
+}
+
+.loader-wrap.hidden {
+  display: none;
+}
+
+.loader-wrap img {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* ----------------------------HEADER---------------------------- */
 
 .header-container {
