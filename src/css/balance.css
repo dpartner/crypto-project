@@ -1,10 +1,10 @@
 /* ----------------------------BALANCE---------------------------- */
 
-main {
+/* main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .balance-section {
   padding-top: 28px;
@@ -220,10 +220,10 @@ body.loaded .tokens-list-wrap {
   margin-left: 5px;
 }
 .tokens-item-summary-status.up {
-  color: #009e71;
+  color: var(--approve-color);
 }
 .tokens-item-summary-status.down {
-  color: #f6465d;
+  color: var(--disapprove-color);
 }
 
 .tokens-item-summary-sum {

@@ -11,6 +11,8 @@ async function renderHeader() {
   console.log(userInfo);
   domElements.headerUserId.textContent = userInfo.id;
   domElements.userIcon.src = userInfo.photoUrl;
+  domElements.userIcon.style.width = 'auto';
+  domElements.userIcon.style.height = '100%';
 }
 
 renderHeader();

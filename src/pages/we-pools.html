@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/modern-normalize.css" />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/we-pools.css" />
+  </head>
+  <body onload="document.body.className += ' loaded';">
+    <header class="section header-section">
+      <div class="container header-container">
+        <div class="header-menu-button-wrap">
+          <button class="header-menu-button"><span></span></button>
+        </div>
+        <div>
+          <p class="header-user-id">#user_<span>id</span></p>
+        </div>
+        <div class="user-icon-wrap">
+          <img src="../img/svg/user-icon.svg" alt="" />
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="section button-section">
+        <div class="container">
+          <div class="we-img-wrap">
+            <img
+              srcset="../img/welcome@1x.png 1x, ../img/welcome@2x.png 2x"
+              src="../img/welcome@1x.png"
+              alt="welcome img"
+            />
+          </div>
+          <div class="we-heading-button-wrap">
+            <button class="we-button">WE Pools</button>
+            <button class="we-button deactive">WE Pools</button>
+          </div>
+        </div>
+      </section>
+      <section class="section pools-section">
+        <div class="container pools-container">
+          <div class="pools-list-wrap">
+            <ul class="pools-list">
+              <li class="pools-list-item shown">
+                <div class="pools-list-item-values-wrap">
+                  <div class="pools-list-icon-wrap">
+                    <img
+                      src="../img/tonkoin.png"
+                      width="32"
+                      height="32"
+                      alt="tonkoin"
+                    />
+                  </div>
+                  <div class="pools-item-heading">
+                    <h4>TON</h4>
+                    <span class="pools-item-heading-apr aprove">10% APR</span>
+                    <span class="pools-item-heading-days">14 d</span>
+                    <button
+                      class="pools-item-heading-button"
+                      data-action="open-input"
+                    >
+                      <svg width="9" height="9">
+                        <use
+                          href="../img/svg/symbol-defs.svg#icon-down-arrow"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="pools-item-details-wrap">
+                  <div class="pools-item-details-heading">
+                    <p>Your Balance:</p>
+                    <span class="pools-item-details-value">15.55</span>
+                    <span class="pools-item-details-code"> TON</span>
+                  </div>
+                  <form class="pools-input-form" action="">
+                    <input
+                      class="pools-item-details-input"
+                      type="number"
+                      placeholder="Enter Amount"
+                    />
+                    <button
+                      class="pools-item-details-input-max-button"
+                      data-action="max-value"
+                    >
+                      Max
+                    </button>
+                    <div class="pools-item-details-button-wrap">
+                      <button
+                        type="button"
+                        class="primary-button deactive pools-item-details-button"
+                      >
+                        Info
+                      </button>
+                      <button
+                        type="submit"
+                        class="primary-button pools-item-details-button"
+                      >
+                        Invest
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <section class="section">
+        <div class="container">
+          <nav>
+            <ul class="footer-button-list">
+              <li class="footer-button-item">
+                <a
+                  class="footer-button-link close-history"
+                  href="./balance.html"
+                >
+                  <svg width="25" height="25">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-first-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item active">
+                <a class="footer-button-link" href="./we-pools.html">
+                  <svg width="25" height="25">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-second-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item center">
+                <a class="footer-button-link center" href="#">
+                  <svg width="28" height="23">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-third-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item fourth">
+                <a class="footer-button-link" href="#">
+                  <svg width="21" height="25">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-fourth-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="footer-button-item">
+                <a class="footer-button-link" href="#">
+                  <svg width="25" height="28">
+                    <use
+                      href="../img/svg/symbol-defs.svg#icon-fifth-page"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </footer>
+  </body>
+  <script type="module" src="../js/user.js"></script>
+  <script type="module" src="../js/we-pools.js"></script>
+</html>

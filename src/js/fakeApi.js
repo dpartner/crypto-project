@@ -14,6 +14,11 @@ export async function fetchHistory() {
   const data = history;
   return data;
 }
+export async function fetchPools() {
+  // data = await fetch('api'); Запрос на твой api  за данными
+  const data = pools;
+  return data;
+}
 
 const coins = [
   {
@@ -161,5 +166,58 @@ const history = [
     symbolName: 'tonkoin.png',
     operation: 'buy',
     amount: '9,65',
+  },
+];
+
+const pools = [
+  {
+    id: 1,
+    coinName: 'Toncoin',
+    coinCode: 'TON',
+    symbolName: 'tonkoin.png',
+    value: '10',
+    status: 'approve',
+    days: '14',
+    balance: '15.55',
+  },
+  {
+    id: 2,
+    coinName: 'Toncoin',
+    coinCode: 'TON',
+    symbolName: 'tonkoin.png',
+    value: '50',
+    status: 'approve',
+    days: '30',
+    balance: '15.55',
+  },
+  {
+    id: 3,
+    coinName: 'DOGS',
+    coinCode: 'DOGS',
+    symbolName: 'dogs.png',
+    value: '15',
+    status: 'disapprove',
+    days: '14',
+    balance: '5.47',
+  },
+  {
+    id: 4,
+    coinName: 'USD₮',
+    coinCode: 'USDT',
+    symbolName: 'usdt.png',
+    value: '25',
+    status: 'approve',
+    days: '30',
+    balance: '12.35',
+  },
+  {
+    id: 5,
+    coinName: 'DOGS',
+    coinCode: 'DOGS',
+    symbolName: 'dogs.png',
+    value: '15',
+    status: 'approve',
+    days: '30',
+    balance: '5.47',
   },
 ];

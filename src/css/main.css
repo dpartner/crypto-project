@@ -11,6 +11,12 @@ body {
   max-height: 100dvh;
 }
 
+main {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .section {
   width: 100%;
   padding-top: 20px;
@@ -36,7 +42,7 @@ body {
 
 .primary-button {
   border-radius: 100px;
-  padding: 15px 20px;
+  padding: 11px 20px;
   font-weight: 500;
   font-size: 14px;
   color: var(--text-color);
@@ -46,7 +52,7 @@ body {
 }
 
 .primary-button.deactive {
-  background: #8793a2;
+  background: var(--text-secondary-color);
 }
 
 /* ----------------------------HEADER---------------------------- */
@@ -113,8 +119,8 @@ body {
   overflow: hidden;
 }
 .user-icon-wrap img {
-  width: auto;
-  height: 100%;
+  /* width: auto;
+  height: 100%; */
   object-fit: contain;
 }
 
