@@ -13,7 +13,7 @@
 .we-img-wrap img {
   max-width: 165px;
   opacity: 0;
-  transition: all 1s ease-in-out;
+  transition: all 1s 0.5s ease-in-out;
 }
 
 .we-img-wrap img.shown {

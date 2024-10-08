@@ -234,6 +234,7 @@
 .history-section {
   transition: all 1s ease-in-out;
   opacity: 1;
+  overflow-y: scroll;
 }
 
 .history-section.hidden {
@@ -243,9 +244,9 @@
 }
 
 .history-list-wrap {
-  max-height: 70dvh;
-  overflow-y: scroll;
-  behavior: smooth;
+  min-height: 100%;
+  /* overflow-y: scroll; */
+  /* behavior: smooth; */
 }
 
 .history-list-date {
