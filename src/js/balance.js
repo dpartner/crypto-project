@@ -26,6 +26,7 @@ async function addMarkup() {
 
   // Imitation fetch delay----------------------------------delete this
   const pause = await timeOut(800);
+  // LOADER
 
   try {
     user = await fetchUser();
@@ -123,17 +124,24 @@ domElements.closeHistoryButton.addEventListener('click', handleCloseHistory);
 
 async function handleShowHistory(e) {
   e.preventDefault();
+  domElements.loader.classList.remove('hidden');
+
+  // Imitation fetch delay----------------------------------delete this
+  const pause = await timeOut(800);
   // LOADER
+
   const markup = await createhistoryMarkup();
   domElements.historyListWrap.innerHTML = markup;
-
+  domElements.loader.classList.add('hidden');
   toggleHistory();
 }
 
 function handleCloseHistory(e) {
   e.preventDefault();
   // LOADER
-  toggleHistory();
+  if (!domElements.historySection.classList.contains('hidden')) {
+    toggleHistory();
+  }
 }
 
 function toggleHistory() {

@@ -15,6 +15,7 @@ async function addMarkup() {
 
   // Imitation fetch delay----------------------------------delete this
   const pause = await timeOut(800);
+  // LOADER
 
   try {
     const markup = await createMarkup();
