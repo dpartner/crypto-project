@@ -33,8 +33,6 @@ domElements.poolsList.addEventListener('click', handlePoolsChanger);
 
 function handlePoolsChanger(e) {
   e.preventDefault();
-  console.dir(e.target);
-  console.dir(e.currentTarget);
   if (e.target.dataset.action === 'open-input') {
     e.target.parentElement.parentElement.parentElement.classList.toggle(
       'shown'
