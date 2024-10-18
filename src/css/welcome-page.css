@@ -44,17 +44,17 @@ body.loaded .img-wrap {
   margin-top: auto;
   display: block;
   width: 100%;
-  opacity: 0;
+  /* opacity: 0; */
 }
 /* Animation when page loaded */
-body.loaded .welcome-button-wrap {
+/* body.loaded .welcome-button-wrap {
   opacity: 1;
   -webkit-animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) 1s
       both,
     bounce 1s 2s 3 both;
   animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) 1s both,
     bounce 1s 2s 3 both;
-}
+} */
 
 .welcome-button-wrap a {
   padding: 20px;
