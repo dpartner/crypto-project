@@ -6,6 +6,10 @@ const domElements = {
   frienListSection: document.querySelector('.fl-section'),
   headingSection: document.querySelector('.hd-section'),
   inviteButtonWrap: document.querySelector('.button-wrap'),
+  inviteButton: document.querySelector('[data-action="openLink"]'),
+  refLinkBackdrop: document.querySelector('.ref-link-backdrop'),
+  copyButton: document.querySelector('[data-action="copyLink"]'),
+  notification: document.querySelector('.ref-notification'),
 };
 const timeOut = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -29,9 +33,6 @@ async function addMarkup() {
     domElements.headingSection.classList.add('shown');
     domElements.friendList.classList.add('shown');
     domElements.inviteButtonWrap.classList.add('shown');
-    // setTimeout(() => {
-    //   domElements.inviteButtonWrap.classList.add('shown');
-    // }, 300);
   } catch (error) {
     domElements.loader.children[1].innerHTML =
       'Something went wrong, please try again...';
@@ -45,7 +46,6 @@ function createFriendListMarkup(data) {
       photoUrl = '../img/svg/user-icon.svg';
       pictureWrapClass = '';
     }
-    console.log(coins);
     return `
               <li class="fl-list-item">
                 <div class="user-icon-wrap fl ${pictureWrapClass}">
@@ -63,4 +63,59 @@ function createFriendListMarkup(data) {
   return markup.join('');
 }
 
-// --------------------Creating Daily Check markup-------------------
+// --------------------Invite ref link wrap-------------------
+
+domElements.inviteButton.addEventListener('click', handleLinkOpen);
+let touchstartY = 0;
+let touchendY = 0;
+function handleTouchStart(e) {
+  touchstartY = e.changedTouches[0].screenY;
+}
+function handleTouchEnd(e) {
+  touchendY = e.changedTouches[0].screenY;
+  checkDirection();
+}
+
+function checkDirection() {
+  // if (touchendY < touchstartY) alert('swiped up!');
+  if (touchendY > touchstartY) closeRefLink();
+}
+
+function handleLinkOpen(e) {
+  domElements.refLinkBackdrop.classList.add('shown');
+  domElements.refLinkBackdrop.addEventListener('touchstart', handleTouchStart);
+  domElements.refLinkBackdrop.addEventListener('touchend', handleTouchEnd);
+  domElements.refLinkBackdrop.addEventListener('click', checkIsBackdrop);
+}
+
+function closeRefLink() {
+  domElements.refLinkBackdrop.classList.remove('shown');
+  domElements.refLinkBackdrop.removeEventListener(
+    'touchstart',
+    handleTouchStart
+  );
+  domElements.refLinkBackdrop.removeEventListener('touchend', handleTouchEnd);
+  domElements.refLinkBackdrop.removeEventListener('click', checkIsBackdrop);
+}
+
+function checkIsBackdrop(e) {
+  if (e.target === e.currentTarget) closeRefLink();
+}
+
+domElements.copyButton.addEventListener('click', handleCopyButton);
+
+function handleCopyButton() {
+  //-------paste here referal link for copy
+  let link = 'Your ref Link';
+
+  domElements.notification.classList.add('shown');
+  navigator.clipboard
+    .writeText(link)
+    .then(() => {})
+    .catch(err => {
+      console.log('Something went wrong', err);
+    });
+  setTimeout(() => {
+    domElements.notification.classList.remove('shown');
+  }, 3000);
+}
