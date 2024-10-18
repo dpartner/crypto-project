@@ -30,6 +30,12 @@ export async function fetchDailyTasks() {
   return data;
 }
 
+export async function fetchFriendList() {
+  // data = await fetch('api'); Запрос на твой api  за данными
+  const data = friendList;
+  return data;
+}
+
 const coins = [
   {
     id: 1,
@@ -355,5 +361,53 @@ const dailyTasks = [
     buttonName: 'Claim',
     buttonStatus: true,
     value: '3,230',
+  },
+];
+
+const friendList = [
+  {
+    id: 11245,
+    name: 'John Wick',
+    coins: [
+      { code: 'near', value: '4.25' },
+      { code: 'ton', value: '2.37' },
+    ],
+    photoUrl: '',
+  },
+  {
+    id: 34987,
+    name: 'John Wick',
+    coins: [
+      { code: 'near', value: '2.35' },
+      { code: 'ton', value: '2.49' },
+    ],
+    photoUrl: '../img/user-photo.png',
+  },
+  {
+    id: 34509,
+    name: 'John Wick',
+    coins: [
+      { code: 'near', value: '6.35' },
+      { code: 'ton', value: '1.47' },
+    ],
+    photoUrl: '',
+  },
+  {
+    id: 12340,
+    name: 'John Wick',
+    coins: [
+      { code: 'near', value: '5.45' },
+      { code: 'ton', value: '7.33' },
+    ],
+    photoUrl: '../img/user-photo.png',
+  },
+  {
+    id: 11245,
+    name: 'John Wick',
+    coins: [
+      { code: 'near', value: '2.75' },
+      { code: 'ton', value: '5.59' },
+    ],
+    photoUrl: '../img/user-photo.png',
   },
 ];
