@@ -36,7 +36,7 @@
       <section class="section hd-section">
         <div class="container hd-container">
           <h1 class="hd-heading">Tasks</h1>
-          <p class="hd-desc">0/20</p>
+          <p class="hd-desc"><span id="done-tasks"></span>/20</p>
         </div>
       </section>
       <!-- -------------------Tasks category List section---------------- -->
@@ -44,19 +44,14 @@
         <div class="container tc-container">
           <ul class="tc-list">
             <li class="tc-list-item">
-              <button class="tc-list-item-button">New</button>
-            </li>
-            <li class="tc-list-item">
-              <button class="tc-list-item-button">Partners</button>
-            </li>
-            <li class="tc-list-item">
-              <button class="tc-list-item-button">Socials</button>
-            </li>
-            <li class="tc-list-item">
-              <button class="tc-list-item-button">Academic</button>
-            </li>
-            <li class="tc-list-item">
-              <button class="tc-list-item-button">Daily</button>
+              <button
+                type="button"
+                class="tc-list-item-button active"
+                onclick="handleTranslateTaskList(this, event)"
+                data-translate="0"
+              >
+                New
+              </button>
             </li>
           </ul>
           <div class="gradient"></div>
@@ -65,7 +60,8 @@
       <!-- -------------------Tasks List section---------------- -->
       <section class="section t-section">
         <div class="container t-container">
-          <ul class="t-list">
+          <ul class="tasks-carusel-list"></ul>
+          <!-- <ul class="t-list">
             <li class="t-list-item">
               <div class="user-icon-wrap t">
                 <img src="../img/svg/user-icon.svg" alt="" />
@@ -150,7 +146,7 @@
                 <button class="t-item-btn">Go</button>
               </div>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </section>
     </main>
@@ -220,4 +216,19 @@
   </body>
   <script type="module" src="../js/user.js"></script>
   <script type="module" src="../js/tasks.js"></script>
+  <script>
+    function handleTranslateTaskList(element, event) {
+      console.dir(event.target.parentElement.parentElement);
+      const buttonTranslateValue = event.target.dataset.translate;
+      const handleTranslate =
+        buttonTranslateValue * window.screen.width - 16 * buttonTranslateValue;
+      const carusel = document.querySelector('.tasks-carusel-list');
+      carusel.style = `transform: translateX(-${handleTranslate}px);`;
+      console.log(typeof document.querySelectorAll('.tc-list-item-button'));
+      document
+        .querySelectorAll('.tc-list-item-button')
+        .forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+    }
+  </script>
 </html>

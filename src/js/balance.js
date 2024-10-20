@@ -153,15 +153,12 @@ function toggleHistory() {
 // Grouping array history transactions from date
 async function dataGroupingHistory() {
   const history = await fetchHistory();
-  console.log(history);
   const historyGroups = [];
   for (const trans of history) {
     const dateTrans = new Date(trans.date);
     const dateTransWithoutTime = getDateWithoutTime(dateTrans);
     if (historyGroups.length) {
-      console.log(historyGroups);
       const findedGroup = historyGroups.find(group => {
-        console.log(1);
         const dateGroup = new Date(group.date);
         return (
           dateTrans.getDate() === dateGroup.getDate() &&
@@ -170,7 +167,6 @@ async function dataGroupingHistory() {
         );
       });
       if (findedGroup) {
-        console.log(2);
         findedGroup.transactions.push(trans);
       } else {
         historyGroups.push({
@@ -179,7 +175,6 @@ async function dataGroupingHistory() {
         });
       }
     } else {
-      console.log(3);
       historyGroups.push({
         date: dateTransWithoutTime,
         transactions: [trans],
@@ -210,7 +205,6 @@ async function createhistoryMarkup() {
   const groupsSorted = groups.sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   });
-  console.log(groups);
   const markup = groupsSorted.map(group => {
     const sortedTransactions = group.transactions.sort((a, b) => {
       return new Date(b.date) - new Date(a.date);

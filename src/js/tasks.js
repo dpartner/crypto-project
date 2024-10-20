@@ -1,15 +1,13 @@
-import { fetchFriendList } from './fakeApi.js';
+import { fetchTaskList } from './fakeApi.js';
 
 const domElements = {
   loader: document.querySelector('.loader-wrap'),
-  friendList: document.querySelector('.fl-list'),
-  frienListSection: document.querySelector('.fl-section'),
   headingSection: document.querySelector('.hd-section'),
-  inviteButtonWrap: document.querySelector('.button-wrap'),
-  inviteButton: document.querySelector('[data-action="openLink"]'),
-  refLinkBackdrop: document.querySelector('.ref-link-backdrop'),
-  copyButton: document.querySelector('[data-action="copyLink"]'),
-  notification: document.querySelector('.ref-notification'),
+  doneTasksValue: document.getElementById('done-tasks'),
+  taskCategoriSection: document.querySelector('.tc-section'),
+  taskCategoryList: document.querySelector('.tc-list'),
+  taskSection: document.querySelector('.t-section'),
+  tasksCarusel: document.querySelector('.tasks-carusel-list'),
 };
 const timeOut = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -24,98 +22,91 @@ async function addMarkup() {
   const pause = await timeOut(800);
   // LOADER
   try {
-    const friendListData = await fetchFriendList();
+    const taskPageData = await fetchTaskList();
 
-    const markupFriendList = createFriendListMarkup(friendListData);
+    const markupCategoryList = createCategoryMarkup(taskPageData);
+    const markupTasksCarusel = createTasksListCaruselMarkup(taskPageData);
 
     domElements.loader.classList.add('hidden');
-    domElements.friendList.innerHTML = markupFriendList;
+    domElements.doneTasksValue.innerHTML = sumDoneTasks(taskPageData);
+    domElements.taskCategoryList.innerHTML = markupCategoryList;
+    domElements.tasksCarusel.innerHTML = markupTasksCarusel;
     domElements.headingSection.classList.add('shown');
-    domElements.friendList.classList.add('shown');
-    domElements.inviteButtonWrap.classList.add('shown');
+    domElements.taskCategoriSection.classList.add('shown');
+    domElements.taskSection.classList.add('shown');
   } catch (error) {
     domElements.loader.children[1].innerHTML =
       'Something went wrong, please try again...';
   }
 }
 
-function createFriendListMarkup(data) {
-  const markup = data.map(({ id, coins, photoUrl }) => {
-    let pictureWrapClass = 'hasPicture';
-    if (!photoUrl) {
-      photoUrl = '../img/svg/user-icon.svg';
-      pictureWrapClass = '';
-    }
-    return `
-              <li class="fl-list-item">
-                <div class="user-icon-wrap fl ${pictureWrapClass}">
-                  <img src="${photoUrl}" alt="" />
+function createTasksListCaruselMarkup(data) {
+  const tasksCaruselMarkup = data.map(({ tasks }, index) => {
+    const tasklistMarkup = tasks
+      .map(({ title, value, buttonName, status }) => {
+        let buttonContent = '';
+        let buttonClass = '';
+        switch (status) {
+          case 'active':
+            buttonContent = buttonName;
+            break;
+          case 'rejected':
+            buttonContent =
+              '<img src="../img/svg/rejected-task.svg" alt="rejected" />';
+            buttonClass = 'noActive';
+            break;
+          case 'done':
+            buttonContent = '<img src="../img/svg/done-task.svg" alt="done" />';
+            buttonClass = 'noActive';
+            break;
+          default:
+            buttonContent = buttonName;
+            break;
+        }
+        return `<li class="t-list-item">
+                <div class="user-icon-wrap t">
+                  <img src="../img/svg/star-light.svg" alt="" />
                 </div>
-                <div class="fl-content">
-                  <div class="fl-text-wrap">
-                    <h2 class="fl-title">#user_${id}</h2>
-                    <p class="fl-balance">${coins[0].value} ${coins[0].code} | ${coins[1].value} ${coins[1].code} </p>
+                <div class="t-content">
+                  <div class="t-text-wrap">
+                    <h2 class="t-title">${title}</h2>
+                    <p class="t-balance">+${value} WE</p>
                   </div>
+                  <button class="t-item-btn ${buttonClass}">${buttonContent}</button>
                 </div>
-              </li>
+              </li>`;
+      })
+      .join('');
+    return `
+            <li class="tasks-carusel-item">
+              <ul class="t-list">
+                ${tasklistMarkup}
+              </ul>
+            </li>
     `;
   });
-  return markup.join('');
+  return tasksCaruselMarkup.join('');
 }
 
-// --------------------Invite ref link wrap-------------------
+// --------------------Create Category Markup-------------------
 
-domElements.inviteButton.addEventListener('click', handleLinkOpen);
-let touchstartY = 0;
-let touchendY = 0;
-function handleTouchStart(e) {
-  touchstartY = e.changedTouches[0].screenY;
-}
-function handleTouchEnd(e) {
-  touchendY = e.changedTouches[0].screenY;
-  checkDirection();
-}
-
-function checkDirection() {
-  // if (touchendY < touchstartY) alert('swiped up!');
-  if (touchendY > touchstartY) closeRefLink();
+function createCategoryMarkup(data) {
+  const categoryMarkup = data.map(({ category }, index) => {
+    return `
+            <li class="tc-list-item">
+              <button class="tc-list-item-button ${!index && 'active'}"
+              onclick="handleTranslateTaskList(this, event)"
+              data-translate="${index}">${category}</button>
+            </li> 
+    `;
+  });
+  return categoryMarkup.join('');
 }
 
-function handleLinkOpen(e) {
-  domElements.refLinkBackdrop.classList.add('shown');
-  domElements.refLinkBackdrop.addEventListener('touchstart', handleTouchStart);
-  domElements.refLinkBackdrop.addEventListener('touchend', handleTouchEnd);
-  domElements.refLinkBackdrop.addEventListener('click', checkIsBackdrop);
-}
+function sumDoneTasks(data) {
+  let doneTasksValue = data.reduce((acc, el) => {
+    return acc + el.tasks.filter(({ status }) => status === 'done').length;
+  }, 0);
 
-function closeRefLink() {
-  domElements.refLinkBackdrop.classList.remove('shown');
-  domElements.refLinkBackdrop.removeEventListener(
-    'touchstart',
-    handleTouchStart
-  );
-  domElements.refLinkBackdrop.removeEventListener('touchend', handleTouchEnd);
-  domElements.refLinkBackdrop.removeEventListener('click', checkIsBackdrop);
-}
-
-function checkIsBackdrop(e) {
-  if (e.target === e.currentTarget) closeRefLink();
-}
-
-domElements.copyButton.addEventListener('click', handleCopyButton);
-
-function handleCopyButton() {
-  //-------paste here referal link for copy
-  let link = 'Your ref Link';
-
-  domElements.notification.classList.add('shown');
-  navigator.clipboard
-    .writeText(link)
-    .then(() => {})
-    .catch(err => {
-      console.log('Something went wrong', err);
-    });
-  setTimeout(() => {
-    domElements.notification.classList.remove('shown');
-  }, 3000);
+  return doneTasksValue;
 }

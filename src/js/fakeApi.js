@@ -35,6 +35,11 @@ export async function fetchFriendList() {
   const data = friendList;
   return data;
 }
+export async function fetchTaskList() {
+  // data = await fetch('api'); Запрос на твой api  за данными
+  const data = taskList;
+  return data;
+}
 
 const coins = [
   {
@@ -409,5 +414,212 @@ const friendList = [
       { code: 'ton', value: '5.59' },
     ],
     photoUrl: '../img/user-photo.png',
+  },
+];
+
+const taskList = [
+  {
+    id: 88,
+    category: 'New',
+    tasks: [
+      {
+        id: 2345,
+        title: 'Navigating Crypto',
+        value: '250',
+        buttonName: 'Start',
+        status: 'active',
+      },
+      {
+        id: 3456,
+        title: 'Secure your Crypto!',
+        value: '250',
+        buttonName: 'Verify',
+        status: 'active',
+      },
+      {
+        id: 4567,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 8769,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+    ],
+  },
+  {
+    id: 77,
+    category: 'Partners',
+    tasks: [
+      {
+        id: 1345,
+        title: 'Add Crypto Parner',
+        value: '450',
+        buttonName: 'Start',
+        status: 'active',
+      },
+      {
+        id: 4056,
+        title: 'Connect to partner',
+        value: '350',
+        buttonName: 'Check',
+        status: 'active',
+      },
+      {
+        id: 4067,
+        title: 'Add more partners',
+        value: '550',
+        buttonName: 'Start',
+        status: 'done',
+      },
+      {
+        id: 8069,
+        title: 'Connect bigApple',
+        value: '111',
+        buttonName: 'Check',
+        status: 'active',
+      },
+    ],
+  },
+  {
+    id: 66,
+    category: 'Onchain',
+    tasks: [
+      {
+        id: 3445,
+        title: 'Navigating Crypto',
+        value: '250',
+        buttonName: 'Start',
+        status: 'active',
+      },
+      {
+        id: 3786,
+        title: 'Secure your Crypto!',
+        value: '250',
+        buttonName: 'Verify',
+        status: 'active',
+      },
+      {
+        id: 4907,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 2169,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+    ],
+  },
+  {
+    id: 55,
+    category: 'Socials',
+    tasks: [
+      {
+        id: 1345,
+        title: 'Navigating Crypto',
+        value: '250',
+        buttonName: 'Start',
+        status: 'active',
+      },
+      {
+        id: 1456,
+        title: 'Secure your Crypto!',
+        value: '250',
+        buttonName: 'Verify',
+        status: 'active',
+      },
+      {
+        id: 1567,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 1769,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+    ],
+  },
+  {
+    id: 33,
+    category: 'Academic',
+    tasks: [
+      {
+        id: 4345,
+        title: 'Navigating Crypto',
+        value: '250',
+        buttonName: 'Start',
+        status: 'active',
+      },
+      {
+        id: 4456,
+        title: 'Secure your Crypto!',
+        value: '250',
+        buttonName: 'Verify',
+        status: 'active',
+      },
+      {
+        id: 5567,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 7769,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+    ],
+  },
+  {
+    id: 22,
+    category: 'Academic',
+    tasks: [
+      {
+        id: 7345,
+        title: 'Navigating Crypto',
+        value: '250',
+        buttonName: 'Start',
+        status: 'active',
+      },
+      {
+        id: 7456,
+        title: 'Secure your Crypto!',
+        value: '250',
+        buttonName: 'Verify',
+        status: 'active',
+      },
+      {
+        id: 8567,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 9769,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+    ],
   },
 ];
