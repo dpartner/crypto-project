@@ -132,6 +132,10 @@
 
 .tasks-carusel-item {
   min-width: 100%;
+  max-height: calc(100dvh - 311px);
+  align-self: flex-start;
+  overflow: scroll;
+  /* overflow-y: scroll; */
 }
 
 .t-list-item {

@@ -104,6 +104,10 @@ const user = {
   email: 'john.doe@example.com',
   balance: '23567',
   photoUrl: '../img/user-photo.png',
+  coins: [
+    { code: 'near', value: '4.25' },
+    { code: 'ton', value: '2.37' },
+  ],
 };
 
 const history = [
@@ -445,6 +449,34 @@ const taskList = [
       },
       {
         id: 8769,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+      {
+        id: 5467,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 7869,
+        title: 'Backing from Binance Labs',
+        value: '111',
+        buttonName: 'Start',
+        status: 'done',
+      },
+      {
+        id: 1267,
+        title: 'The Open League Quest',
+        value: '450',
+        buttonName: 'Start',
+        status: 'rejected',
+      },
+      {
+        id: 7362,
         title: 'Backing from Binance Labs',
         value: '111',
         buttonName: 'Start',

@@ -68,6 +68,68 @@
           </div>
         </div>
       </section>
+      <!-- -------------------MENU---------------- -->
+      <div class="menu">
+        <h2 class="menu-heading">Settings</h2>
+        <div class="menu-user-info-wrap">
+          <div class="menu-user-icon-wrap">
+            <img src="../img/svg/user-icon.svg" alt="" />
+          </div>
+          <div class="menu-user-content">
+            <div class="menu-user-text-wrap">
+              <h2 class="menu-user-title">#user_<span>id</span></h2>
+              <p class="menu-user-balance">0.00 NEAR | 0.00 TON</p>
+            </div>
+          </div>
+        </div>
+        <ul class="menu-setting-list">
+          <li class="menu-setting-item">
+            <div class="menu-settings-item-icon-wrap">
+              <img src="../img/svg/language.svg" alt="" />
+            </div>
+            <h3 class="menu-settings-item-heading">Language</h3>
+            <button
+              type="button"
+              class="menu-settings-item-button"
+              id="lng-btn"
+            >
+              <svg width="9" height="9">
+                <use href="../img/svg/symbol-defs.svg#icon-down-arrow" />
+              </svg>
+            </button>
+          </li>
+          <li class="menu-setting-item">
+            <div class="menu-settings-item-icon-wrap">
+              <img src="../img/svg/inviter.svg" alt="" />
+            </div>
+            <h3 class="menu-settings-item-heading">Inviter</h3>
+            <button
+              type="button"
+              class="menu-settings-item-button"
+              id="inv-btn"
+            >
+              <svg width="9" height="9">
+                <use href="../img/svg/symbol-defs.svg#icon-down-arrow" />
+              </svg>
+            </button>
+          </li>
+          <li class="menu-setting-item">
+            <div class="menu-settings-item-icon-wrap">
+              <img src="../img/svg/logout.svg" alt="" />
+            </div>
+            <h3 class="menu-settings-item-heading">Logout</h3>
+            <a
+              href="../../index.html"
+              class="menu-settings-item-button"
+              id="logout-btn"
+            >
+              <svg width="9" height="9">
+                <use href="../img/svg/symbol-defs.svg#icon-down-arrow" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
     </main>
     <!-- -------------------FOOTER---------------- -->
     <footer class="footer">
@@ -128,6 +190,28 @@
         </div>
       </section>
     </footer>
+    <!-- -------------------Inviter link wrap---------------- -->
+    <div class="inv-link-backdrop">
+      <div class="inv-link-wrap">
+        <h2 class="inv-heading">Recover Inviter</h2>
+        <p class="inv-desc">
+          You can link the account that invited you if this did not happen
+          automatically.
+        </p>
+        <form class="inv-form" action="">
+          <input class="inv-input" type="text" name="inputLink" />
+          <button
+            type="submit"
+            class="primary-button inv"
+            data-action="bindInviter"
+          >
+            Bind Inviter
+          </button>
+        </form>
+      </div>
+      <p class="inv-notification">Recover Done!</p>
+    </div>
+    <!-- -------------------Ref link wrap---------------- -->
     <div class="ref-link-backdrop">
       <div class="ref-link-wrap">
         <img
@@ -147,7 +231,7 @@
       </div>
       <p class="ref-notification">Referal link copied</p>
     </div>
-
+    <!-- -------------------Loader---------------- -->
     <div class="loader-wrap hidden">
       <img src="../img/svg/loader.png" />
       <p>LOADING</p>
@@ -155,4 +239,5 @@
   </body>
   <script type="module" src="../js/user.js"></script>
   <script type="module" src="../js/invite.js"></script>
+  <script type="module" src="../js/menu.js"></script>
 </html>

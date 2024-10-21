@@ -10,6 +10,7 @@ const domElements = {
   tgSection: document.querySelector('.tg-section'),
   weBalanceSection: document.querySelector('.we-balance-section'),
   tskItems: document.querySelectorAll('.tsk-list-item'),
+  header: document.querySelector('header'),
 };
 const timeOut = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -81,13 +82,21 @@ function createDailyTasksMarkup(data) {
 
 // Animation UPGRADE notification and change WE Balance
 
+// Корректирую позиционирование top с помощью высоты хедера, так как абсолютное позионирование идет не относительно body, а относительно main.
+const headerHeight =
+  domElements.header.getBoundingClientRect().bottom -
+  domElements.header.getBoundingClientRect().top;
+console.log(headerHeight);
+
 function handleUpgrade(e) {
   let left = e.target.getBoundingClientRect().left;
-  let top = e.target.getBoundingClientRect().top;
+  let top = e.target.getBoundingClientRect().top - headerHeight;
   domElements.upgradeNotif.style.left = left + 'px';
   domElements.upgradeNotif.style.top = top + 'px';
   const targetCoordinateY = -(
-    top - domElements.weBalanceValue.getBoundingClientRect().top
+    top -
+    domElements.weBalanceValue.getBoundingClientRect().top +
+    headerHeight
   );
   const targetCoordinateX = -(
     left - domElements.weBalanceValue.getBoundingClientRect().left
@@ -123,15 +132,15 @@ function handleUpgrade(e) {
 // Animation TASKS notification and change WE Balance
 
 function handleTasks(e) {
-  console.dir(e.target);
   if (e.target.type === 'button') {
     let left = e.target.getBoundingClientRect().left;
-    let top = e.target.getBoundingClientRect().top;
-    console.log(left, top);
+    let top = e.target.getBoundingClientRect().top - headerHeight;
     domElements.tasksNotif.style.left = left + 'px';
     domElements.tasksNotif.style.top = top + 'px';
     const targetCoordinateY = -(
-      top - domElements.weBalanceValue.getBoundingClientRect().top
+      top -
+      domElements.weBalanceValue.getBoundingClientRect().top +
+      headerHeight
     );
     const targetCoordinateX = -(
       left - domElements.weBalanceValue.getBoundingClientRect().left
@@ -165,7 +174,3 @@ function handleTasks(e) {
     }, 1400);
   }
 }
-
-document.body.addEventListener('click', e => {
-  console.log(e.target.getBoundingClientRect().bottom);
-});
