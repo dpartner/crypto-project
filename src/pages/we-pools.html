@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="../css/modern-normalize.css" />
     <link rel="stylesheet" href="../css/variables.css" />
     <link rel="stylesheet" href="../fonts/fonts.css" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/we-pools.css" />
+    <link rel="stylesheet" href="../css/main.css?v=2" />
+    <link rel="stylesheet" href="../css/we-pools.css?v=2" />
   </head>
   <body onload="document.body.className += ' loaded';">
     <header class="section header-section">
@@ -39,14 +39,14 @@
             />
           </div>
           <div class="we-heading-button-wrap">
-            <button class="we-button">WE Pools</button>
-            <button class="we-button deactive">WE Pools</button>
+            <button id="we-btn" class="we-button active">WE Pools</button>
+            <button id="my-btn" class="we-button">My Pools</button>
           </div>
         </div>
       </section>
       <section class="section pools-section">
         <div class="container pools-container">
-          <div class="pools-list-wrap">
+          <div class="pools-lists-wrap">
             <ul class="pools-list">
               <li class="pools-list-item shown">
                 <div class="pools-list-item-values-wrap">
@@ -112,6 +112,20 @@
                 </div>
               </li>
             </ul>
+            <div class="my-pools-wrap">
+              <div>
+                <h3 class="my-pools-heading">Total staked:</h3>
+                <p class="my-pools-value">9900 TON</p>
+              </div>
+              <div>
+                <h3 class="my-pools-heading">Your staked amount:</h3>
+                <p class="my-pools-value">839 TON</p>
+              </div>
+              <div>
+                <h3 class="my-pools-heading">Claimable amount:</h3>
+                <p class="my-pools-value">16 TON</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -196,8 +210,8 @@
                   </svg>
                 </a>
               </li>
-              <li class="footer-button-item active">
-                <a class="footer-button-link" href="./we-pools.html">
+              <li class="footer-button-item">
+                <a class="footer-button-link" href="./daily.html">
                   <svg width="25" height="25">
                     <use
                       href="../img/svg/symbol-defs.svg#icon-second-page"
@@ -205,8 +219,8 @@
                   </svg>
                 </a>
               </li>
-              <li class="footer-button-item center">
-                <a class="footer-button-link center" href="./daily.html">
+              <li class="footer-button-item center active">
+                <a class="footer-button-link center" href="./we-pools.html">
                   <svg width="35" height="35">
                     <use
                       href="../img/svg/symbol-defs.svg#icon-third-page"

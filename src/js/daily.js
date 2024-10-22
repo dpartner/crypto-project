@@ -125,8 +125,8 @@ function handleUpgrade(e) {
     e.target.classList.add('removed');
     setTimeout(() => {
       e.target.style.display = 'none';
-    }, 1000);
-  }, 1300);
+    }, 500);
+  }, 500);
 }
 
 // Animation TASKS notification and change WE Balance
@@ -170,7 +170,7 @@ function handleTasks(e) {
       e.target.parentElement.classList.add('removed');
       setTimeout(() => {
         e.target.parentElement.style.display = 'none';
-      }, 1400);
-    }, 1400);
+      }, 500);
+    }, 1000);
   }
 }

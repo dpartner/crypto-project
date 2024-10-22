@@ -27,27 +27,49 @@
 }
 .we-button {
   font-weight: 700;
-  font-size: 17px;
+  font-size: 15px;
+  color: var(--text-secondary-color);
   letter-spacing: 0.03em;
   text-decoration: underline;
-  color: var(--text-color);
   background-color: transparent;
 }
 
 .we-button:not(:last-child) {
   margin-right: 52px;
 }
-.we-button.deactive {
-  font-size: 15px;
-  color: var(--text-secondary-color);
+.we-button.active {
+  font-size: 17px;
+  color: var(--text-color);
 }
 
 .pools-section {
-  overflow: scroll;
+  /* overflow: scroll; */
+}
+
+.pools-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.pools-lists-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  column-gap: 16px;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
+  width: auto;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .pools-list {
   opacity: 0;
+  min-width: 100%;
+  max-height: calc(100dvh - 337px);
+  overflow: scroll;
 }
 
 .pools-list.shown {
@@ -209,4 +231,30 @@
 }
 .pools-item-details-button {
   flex-basis: calc((100% - 30px) / 2);
+}
+
+.my-pools-wrap {
+  min-width: 100%;
+  border: 0.2px solid #23232e;
+  border-radius: 20px;
+  padding: 20px 17px;
+  background: var(--card-bg-color);
+  box-shadow: 0 2px 0 0 rgba(35, 35, 46, 0.99);
+  max-height: calc(100dvh - 337px);
+  overflow: scroll;
+}
+
+.my-pools-wrap div:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.my-pools-heading {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+}
+.my-pools-value {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
 }

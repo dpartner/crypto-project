@@ -99,7 +99,7 @@
 /* ----------Task list---------- */
 
 .t-section {
-  overflow: scroll;
+  /* overflow: scroll; */
   padding: 0;
   opacity: 0;
 }

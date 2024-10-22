@@ -4,6 +4,9 @@ const domElements = {
   loader: document.querySelector('.loader-wrap'),
   poolsList: document.querySelector('.pools-list'),
   poolsListImg: document.querySelector('.we-img-wrap img'),
+  wePoolsBtn: document.getElementById('we-btn'),
+  myPoolsBtn: document.getElementById('my-btn'),
+  poolsListsWrap: document.querySelector('.pools-lists-wrap'),
 };
 
 const timeOut = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -128,4 +131,23 @@ async function createMarkup() {
     })
     .join('');
   return markup;
+}
+
+domElements.wePoolsBtn.addEventListener('click', handleWePools);
+domElements.myPoolsBtn.addEventListener('click', handleMyPools);
+
+const translateWidth = window.screen.width - 16;
+
+function handleMyPools() {
+  domElements.poolsListsWrap.style = `transform: translateX(-${translateWidth}px);`;
+  toogleActiveBtn();
+}
+function handleWePools() {
+  domElements.poolsListsWrap.style = `transform: translateX(0);`;
+  toogleActiveBtn();
+}
+
+function toogleActiveBtn() {
+  domElements.wePoolsBtn.classList.toggle('active');
+  domElements.myPoolsBtn.classList.toggle('active');
 }
