@@ -206,13 +206,18 @@
   <script type="module" src="../js/menu.js"></script>
   <script>
     function handleTranslateTaskList(element, event) {
-      console.dir(event.target.parentElement.parentElement);
+      // console.dir(event.target.parentElement.parentElement);
+      const wrapWidth = document.querySelector(
+        '.tasks-carusel-list'
+      ).offsetWidth;
       const buttonTranslateValue = event.target.dataset.translate;
+      // const handleTranslate =
+      //   buttonTranslateValue * window.screen.width - 16 * buttonTranslateValue;
       const handleTranslate =
-        buttonTranslateValue * window.screen.width - 16 * buttonTranslateValue;
+        buttonTranslateValue * wrapWidth + 16 * buttonTranslateValue;
       const carusel = document.querySelector('.tasks-carusel-list');
       carusel.style = `transform: translateX(-${handleTranslate}px);`;
-      console.log(typeof document.querySelectorAll('.tc-list-item-button'));
+      // console.log(typeof document.querySelectorAll('.tc-list-item-button'));
       document
         .querySelectorAll('.tc-list-item-button')
         .forEach(btn => btn.classList.remove('active'));

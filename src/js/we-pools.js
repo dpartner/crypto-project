@@ -3,6 +3,7 @@ import { fetchPools } from './fakeApi.js';
 const domElements = {
   loader: document.querySelector('.loader-wrap'),
   poolsList: document.querySelector('.pools-list'),
+  myPoolsList: document.querySelector('.my-pools-list'),
   poolsListImg: document.querySelector('.we-img-wrap img'),
   wePoolsBtn: document.getElementById('we-btn'),
   myPoolsBtn: document.getElementById('my-btn'),
@@ -21,8 +22,16 @@ async function addMarkup() {
   // LOADER
 
   try {
-    const markup = await createMarkup();
-    domElements.poolsList.innerHTML = markup;
+    const wePoolsData = await fetchPools();
+    // add another data for My Pools below this
+    const myPoolsData = await fetchPools();
+    // console.log(wePoolsData);
+    const wePoolsMarkup = await createMarkup(wePoolsData);
+    const myPoolsMarkup = await createMarkup(myPoolsData);
+
+    domElements.poolsList.innerHTML = wePoolsMarkup;
+    domElements.myPoolsList.innerHTML = myPoolsMarkup;
+
     domElements.loader.classList.add('hidden');
     domElements.poolsListImg.classList.add('shown');
     domElements.poolsList.classList.add('shown');
@@ -33,6 +42,7 @@ async function addMarkup() {
 }
 
 domElements.poolsList.addEventListener('click', handlePoolsChanger);
+domElements.myPoolsList.addEventListener('click', handlePoolsChanger);
 
 function handlePoolsChanger(e) {
   e.preventDefault();
@@ -50,19 +60,19 @@ function handlePoolsChanger(e) {
   }
   if (e.target.dataset.action === 'max-value') {
     const value = e.target.dataset.maxvalue;
-    console.log(value);
+    // console.log(value);
     e.target.previousElementSibling.value = value;
   }
   if (e.target.type === 'submit') {
     const value = e.target.parentElement.parentElement.children[0].value;
     e.target.parentElement.parentElement.children[0].value = '';
     // Write code below this, for sending data
-    console.log(value);
   }
 }
 
-async function createMarkup() {
-  const data = await fetchPools();
+async function createMarkup(data) {
+  console.log(data);
+  // const data = await fetchPools();
   const markup = data
     .map(pool => {
       let poolStatusCode = '';
@@ -136,7 +146,8 @@ async function createMarkup() {
 domElements.wePoolsBtn.addEventListener('click', handleWePools);
 domElements.myPoolsBtn.addEventListener('click', handleMyPools);
 
-const translateWidth = window.screen.width - 16;
+// const translateWidth = window.screen.width - 16;
+const translateWidth = domElements.poolsListsWrap.offsetWidth + 16;
 
 function handleMyPools() {
   domElements.poolsListsWrap.style = `transform: translateX(-${translateWidth}px);`;

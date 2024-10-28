@@ -72,6 +72,13 @@
   overflow: scroll;
 }
 
+.my-pools-list {
+  /* opacity: 0; */
+  min-width: 100%;
+  max-height: calc(100dvh - 337px);
+  overflow: scroll;
+}
+
 .pools-list.shown {
   opacity: 1;
   -webkit-animation: slide-in-elliptic-top-fwd 0.7s
